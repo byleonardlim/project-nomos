@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Activity, ExternalLink, MessageSquare, Users } from 'lucide-react';
+import { Activity, MessageSquare, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { earlyAccessContent } from '@/content/landing/early-access';
 import { siteContent } from '@/content/site';
@@ -15,7 +15,7 @@ export function EarlyAccessSection() {
     <SectionShell id="early-access">
       <div className="grid gap-8 md:grid-cols-[2fr,1.4fr] md:items-center">
         <div className="space-y-4">
-          <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             {earlyAccessContent.heading}
           </h3>
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -33,12 +33,14 @@ export function EarlyAccessSection() {
             })}
           </ul>
         </div>
-        <Card className="space-y-4">
+        <Card
+          className="space-y-4 rounded-xl bg-background/85 shadow-[0_0_24px_0_rgba(255,255,255,0.5)_inset] backdrop-blur-[20px] border border-black/10"
+        >
           <h4 className="text-sm font-semibold">{earlyAccessContent.panel.heading}</h4>
           <p className="text-xs leading-relaxed text-muted-foreground">
             {earlyAccessContent.panel.description}
           </p>
-          <Button asChild className="w-full rounded-md">
+          <Button asChild className="rounded-md">
             <a
               href={siteContent.urls.tallyInterest}
               target="_blank"
@@ -46,12 +48,8 @@ export function EarlyAccessSection() {
               className="inline-flex items-center gap-2"
             >
               {earlyAccessContent.panel.button}
-              <ExternalLink className="h-4 w-4" />
             </a>
           </Button>
-          <p className="text-[0.7rem] font-mono text-muted-foreground">
-            {earlyAccessContent.panel.footnote}
-          </p>
         </Card>
       </div>
     </SectionShell>

@@ -1,27 +1,56 @@
+"use client";
+
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
 import { siteContent } from '@/content/site';
 import { Button } from '@/components/ui/button';
 
 export function Header() {
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const section = document.getElementById('early-access');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsAtBottom(entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    gsap.to(headerRef.current, {
+      opacity: isAtBottom ? 0 : 1,
+      y: isAtBottom ? 16 : 0,
+      duration: 0.4,
+      ease: 'power2.out',
+      pointerEvents: isAtBottom ? 'none' : 'auto',
+    });
+  }, [isAtBottom]);
+
   return (
-    <header className="fixed inset-x-0 mx-2 lg:mx-8 bottom-2 lg:bottom-4 z-60">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 rounded-xl bg-background/60 px-4 py-2 shadow-lg backdrop-blur-xl sm:px-6 lg:px-8">
+    <header ref={headerRef} className="fixed inset-x-0 mx-8 bottom-8 z-60">
+      <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-lg border border-black/10 bg-background/85 shadow-[0_0_24px_0_rgba(255,255,255,0.5)_inset] p-1 backdrop-blur-xl">
         <div className="flex items-center gap-2">
-          <span className="text-lg lg:text-base font-semibold tracking-tight uppercase">
+          <span className="text-lg lg:text-base font-semibold uppercase px-2">
             {siteContent.brand.name}
           </span>
         </div>
         <div className="flex items-center gap-3 sm:gap-4">
-          <nav className="hidden items-center gap-4 text-xs font-medium text-muted-foreground sm:flex sm:text-sm">
-            <a href="#product" className="transition-colors hover:text-foreground">
-              Product
-            </a>
-            <a href="#why-now" className="transition-colors hover:text-foreground">
-              Why now
-            </a>
-            <a href="#early-access" className="transition-colors hover:text-foreground">
-              Early access
-            </a>
-          </nav>
           <Button asChild className="hidden h-9 rounded-md px-4 text-xs font-medium sm:inline-flex sm:text-sm">
             <a
               href={siteContent.urls.tallyInterest}
@@ -29,7 +58,7 @@ export function Header() {
               rel="noreferrer"
               className="inline-flex items-center gap-2"
             >
-              Join waitlist
+              Join Nomologi Waitlist
             </a>
           </Button>
         </div>

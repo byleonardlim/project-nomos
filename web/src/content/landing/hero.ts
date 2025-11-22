@@ -1,10 +1,10 @@
 export const heroContent = {
-  title: 'Automation made easy, for modern busy people.',
+  title: 'Automation that does not turn into another job.',
   description:
-    'Nomologi is an automation builder for teams who want clarity instead of chaos. Model your real processes, collaborate on changes, and ship automations that are auditable, testable, and owned.',
-  ctaLabel: 'Register your interest',
+    'Nomologi helps teams stuck in brittle zaps and scripts move to clear, reliable automations. Map how work really happens, agree on changes, and ship flows your team can trust and own.',
+  ctaLabel: 'Join the early access list',
   ctaFootnote:
-    'This button will bring you to an external form to express your interest. We will not share your information with any third parties and will only use it to follow up with you about Nomologi.',
+    'This button opens a short form to express interest. We will not share your information with any third parties and will only use it to follow up with you about Nomologi.',
 } as const;
 
 export type HeroContent = typeof heroContent;

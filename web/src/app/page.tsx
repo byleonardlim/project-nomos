@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { HeroSection } from '@/app/(product)/_components/HeroSection';
-import { WhyNowSection } from '@/app/(product)/_components/WhyNowSection';
-import { ProductSection } from '@/app/(product)/_components/ProductSection';
+import { WhatIsNomologiSection } from '@/app/(product)/_components/WhatIsNomologiSection';
+import { FeaturesSection } from '@/app/(product)/_components/FeaturesSection';
 import { EarlyAccessSection } from '@/app/(product)/_components/EarlyAccessSection';
 
 export default function HomePage() {
@@ -15,10 +15,10 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 1. Struggles & challenges with existing automation tools */}
-      <WhyNowSection />
+      <WhatIsNomologiSection />
 
       {/* 3. Killer features that make Nomologi unique */}
-      <ProductSection />
+      <FeaturesSection />
 
       {/* 4. How to be part of the early stage + CTA */}
       <EarlyAccessSection />
