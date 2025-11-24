@@ -47,6 +47,16 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: siteContent.brand.name,
     type: 'website',
+    locale: 'en_US',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteContent.meta.title,
+    description: siteContent.meta.description,
+  },
+  icons: {
+    icon: '/icon.svg',
   },
 };
 
