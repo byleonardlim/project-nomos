@@ -17,6 +17,12 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // On touch devices (mobile/tablet), allow native scrolling to avoid blocking further scroll.
+    const isTouch = 'ontouchstart' in window || (navigator as any).maxTouchPoints > 0;
+    if (isTouch) {
+      return;
+    }
+
     const proxy = { y: window.scrollY };
     let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 

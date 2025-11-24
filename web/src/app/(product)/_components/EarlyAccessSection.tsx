@@ -1,55 +1,40 @@
 "use client";
 
-import React from 'react';
-import { Activity, MessageSquare, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { earlyAccessContent } from '@/content/landing/early-access';
-import { siteContent } from '@/content/site';
 import { SectionShell } from '@/components/layout/SectionShell';
 import { Card } from '@/components/ui/card';
-
-const bulletIcons = [Users, Activity, MessageSquare];
+import { Button } from '@/components/ui/button';
 
 export function EarlyAccessSection() {
   return (
     <SectionShell id="early-access">
       <div className="grid gap-8 md:grid-cols-[2fr,1.4fr] md:items-center">
         <div className="space-y-4">
-          <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            {earlyAccessContent.heading}
-          </h3>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Help shape the first version.
+          </h2>
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {earlyAccessContent.description}
+            Were inviting a small group of teams to experiment with Nomos as we refine the builder, the review loop, and integrations.
           </p>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            {earlyAccessContent.bullets.map((bullet, index) => {
-              const Icon = bulletIcons[index] ?? Users;
-              return (
-                <li key={index} className="flex items-start gap-2">
-                  <Icon className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>{bullet}</span>
-                </li>
-              );
-            })}
+            <li>Share the workflows you struggle to automate today.</li>
+            <li>Try early flows and tell us what actually feels simpler.</li>
+            <li>Get priority access to new capabilities as we ship them.</li>
           </ul>
         </div>
-        <Card
-          className="space-y-4 rounded-xl bg-background/85 shadow-[0_0_24px_0_rgba(255,255,255,0.5)_inset] backdrop-blur-[20px] border border-black/10"
-        >
-          <h4 className="text-sm font-semibold">{earlyAccessContent.panel.heading}</h4>
+        <Card className="space-y-4 rounded-xl border border-black/10 bg-primary/10 backdrop-blur-lg p-4">
+          <h3 className="text-sm font-semibold uppercase">
+            Request early access
+          </h3>
           <p className="text-xs leading-relaxed text-muted-foreground">
-            {earlyAccessContent.panel.description}
+            Leave an email and a short note about how your team uses automation today. We’ll reach out as soon as new spots open.
           </p>
-          <Button asChild className="rounded-md">
-            <a
-              href={siteContent.urls.tallyInterest}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2"
-            >
-              {earlyAccessContent.panel.button}
-            </a>
-          </Button>
+          <div className="flex items-center gap-3 text-xs font-medium uppercase">
+            <Button asChild className="button-glow h-9 rounded-lg bg-primary px-4 text-[0.7rem] font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90">
+              <a href="#early-access">
+                Join Nomologi Waitlist
+              </a>
+            </Button>
+        </div>
         </Card>
       </div>
     </SectionShell>

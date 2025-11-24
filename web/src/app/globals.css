@@ -1,34 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9f5f0;
-  --foreground: #020617;
-  --primary: #382EFE;
+  --background: #030712;
+  --foreground: #F8FAFC;
+  --primary: #4F46E5;
+  /* Slightly lighter indigo for better dark mode contrast */
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: #fff7e6;
+  --color-primary-foreground: #ffffff;
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
 }
-html, body {
+
+html {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: transparent;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
 }
 
 /* Uppercase all headings globally */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--foreground);
+  /* Changed to foreground for better readability in dark mode */
+  letter-spacing: -0.02em;
 }
+
 /* Limit paragraph measure for readability */
 p {
   max-width: 73ch !important;
+  line-height: 1.7;
 }
 
 /* Smooth scroll for in-page navigation while respecting reduced motion */
@@ -48,15 +75,13 @@ p {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(
-    90deg,
-    rgba(245, 244, 255, 0) 0%,
-    rgba(56, 46, 254, 0.9) 50%,
-    rgba(245, 244, 255, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(79, 70, 229, 0) 0%,
+      rgba(79, 70, 229, 0.5) 50%,
+      rgba(79, 70, 229, 0) 100%);
   opacity: 0;
   transform: translateX(-120%);
-  filter: blur(24px);
+  filter: blur(12px);
   transition: opacity 150ms ease-out;
   pointer-events: none;
   z-index: 0;
@@ -71,6 +96,7 @@ p {
   0% {
     transform: translateX(-120%);
   }
+
   100% {
     transform: translateX(120%);
   }

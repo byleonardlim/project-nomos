@@ -4,7 +4,7 @@ import { Commissioner, Noto_Sans_Mono } from 'next/font/google';
 import { siteContent } from '@/content/site';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
+import { BackgroundEffect } from '@/components/layout/BackgroundEffect';
 
 const body = Noto_Sans_Mono({
   subsets: ['latin'],
@@ -37,17 +37,16 @@ export default function RootLayout({
       className={`${body.variable} ${heading.variable}`}
     >
       <body className="min-h-screen text-foreground">
-        <SmoothScrollProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
+        <BackgroundEffect />
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <Header />
 
-            <main className="flex-1">
-              {children}
-            </main>
+          <main className="flex-1">
+            {children}
+          </main>
 
-            <Footer />
-          </div>
-        </SmoothScrollProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   );

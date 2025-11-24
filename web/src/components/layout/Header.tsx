@@ -1,63 +1,61 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { siteContent } from '@/content/site';
+import { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import { Button } from '@/components/ui/button';
 
 export function Header() {
-  const [isAtBottom, setIsAtBottom] = useState(false);
-  const headerRef = useRef<HTMLElement | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const section = document.getElementById('early-access');
-    if (!section) return;
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsAtBottom(entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0.3,
-      }
-    );
+    const ctx = gsap.context(() => {
+      const earlyAccessSection = document.getElementById('early-access');
+      const header = headerRef.current;
 
-    observer.observe(section);
+      if (!earlyAccessSection || !header) return;
 
-    return () => {
-      observer.disconnect();
-    };
+      ScrollTrigger.create({
+        trigger: earlyAccessSection,
+        // Start when the top of the early-access section is near the bottom of the viewport
+        start: "top 85%",
+        onEnter: () =>
+          gsap.to(header, {
+            yPercent: 200,
+            duration: 0.5,
+            ease: "power2.inOut",
+            overwrite: true,
+          }),
+        onLeaveBack: () =>
+          gsap.to(header, {
+            yPercent: 0,
+            duration: 0.5,
+            ease: "power2.inOut",
+            overwrite: true,
+          }),
+      });
+    }, headerRef);
+
+    return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    if (!headerRef.current) return;
-
-    gsap.to(headerRef.current, {
-      opacity: isAtBottom ? 0 : 1,
-      y: isAtBottom ? 16 : 0,
-      duration: 0.4,
-      ease: 'power2.out',
-      pointerEvents: isAtBottom ? 'none' : 'auto',
-    });
-  }, [isAtBottom]);
-
   return (
-    <header ref={headerRef} className="fixed inset-x-0 mx-8 bottom-8 z-60">
-      <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-lg border border-black/10 bg-background/85 shadow-[0_0_24px_0_rgba(255,255,255,0.5)_inset] p-1 backdrop-blur-xl">
+    <header
+      ref={headerRef}
+      className="fixed inset-x-0 bottom-8 z-50 mx-4 md:mx-8"
+    >
+      <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-xl border border-white/10 bg-background/60 p-2 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-background/70 hover:shadow-[0_0_20px_-10px_rgba(79,70,229,0.5)]">
         <div className="flex items-center gap-2">
-          <span className="text-lg lg:text-base font-semibold uppercase px-2">
-            {siteContent.brand.name}
+          <span className="px-2 text-base font-semibold uppercase tracking-wider text-foreground">
+            Nomologi
           </span>
         </div>
-        <div className="flex items-center gap-3 sm:gap-4">
-          <Button asChild className="hidden h-9 rounded-md px-4 text-xs font-medium sm:inline-flex sm:text-sm">
-            <a
-              href={siteContent.urls.tallyInterest}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2"
-            >
+        <div className="flex items-center gap-3 text-xs font-medium uppercase">
+          <Button asChild className="button-glow h-9 rounded-lg bg-primary px-4 text-[0.7rem] font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90">
+            <a href="#early-access">
               Join Nomologi Waitlist
             </a>
           </Button>
