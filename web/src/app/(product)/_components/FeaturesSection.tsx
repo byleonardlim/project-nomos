@@ -20,9 +20,9 @@ export function FeaturesSection() {
           {featuresContent.cards.map((card) => (
             <Card
               key={card.title}
-              className="min-h-[300px] feature-card space-y-4 rounded-xl border border-black/10 bg-primary/10 backdrop-blur-lg p-4 flex flex-col justify-between"
+              className="min-h-[300px] feature-card space-y-4 rounded-xl border border-white/5 bg-background/40 backdrop-blur-lg p-4 flex flex-col justify-between"
             >
-              <h3 className="text-[2.5rem] font-semibold uppercase">
+              <h3 className="text-[2.5rem] font-semibold">
                 {card.title}
               </h3>
               <p className="w-[73ch]text-sm leading-relaxed text-muted-foreground">

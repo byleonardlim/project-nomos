@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
-  --foreground: #F8FAFC;
-  --primary: #4F46E5;
+  --background: #020617;
+  --foreground: #E5E7EB;
+  --primary: #6366F1;
   /* Slightly lighter indigo for better dark mode contrast */
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --secondary: #F4E3CF;
+  --muted: #0F172A;
+  --muted-foreground: #9CA3AF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-primary-foreground: #ffffff;
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -46,9 +48,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
-  text-transform: uppercase;
   color: var(--foreground);
-  /* Changed to foreground for better readability in dark mode */
   letter-spacing: -0.02em;
 }
 
@@ -74,30 +74,35 @@ p {
 .button-glow::before {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
   background: linear-gradient(90deg,
-      rgba(79, 70, 229, 0) 0%,
-      rgba(79, 70, 229, 0.5) 50%,
-      rgba(79, 70, 229, 0) 100%);
-  opacity: 0;
-  transform: translateX(-120%);
-  filter: blur(12px);
+      rgba(99, 102, 241, 0) 0%,
+      rgba(99, 102, 241, 0.7) 50%,
+      rgba(99, 102, 241, 0) 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  opacity: 0.9;
+  filter: blur(3px);
   transition: opacity 150ms ease-out;
   pointer-events: none;
   z-index: 0;
-}
-
-.button-glow:hover::before {
-  opacity: 1;
+  /* Mask so the running light is only visible on the border */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   animation: button-glow-sweep 1.4s linear infinite;
 }
 
 @keyframes button-glow-sweep {
   0% {
-    transform: translateX(-120%);
+    background-position: 0% 50%;
   }
 
   100% {
-    transform: translateX(120%);
+    background-position: 200% 50%;
   }
 }

@@ -18,7 +18,9 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     if (typeof window === 'undefined') return;
 
     // On touch devices (mobile/tablet), allow native scrolling to avoid blocking further scroll.
-    const isTouch = 'ontouchstart' in window || (navigator as any).maxTouchPoints > 0;
+    const hasMaxTouchPoints =
+      typeof navigator !== 'undefined' && 'maxTouchPoints' in navigator && typeof navigator.maxTouchPoints === 'number';
+    const isTouch = 'ontouchstart' in window || (hasMaxTouchPoints && navigator.maxTouchPoints > 0);
     if (isTouch) {
       return;
     }

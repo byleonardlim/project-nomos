@@ -49,11 +49,11 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-xl border border-white/10 bg-background/60 p-2 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-background/70 hover:shadow-[0_0_20px_-10px_rgba(79,70,229,0.5)]">
         <div className="flex items-center gap-2">
-          <span className="px-2 text-base font-semibold uppercase tracking-wider text-foreground">
+          <span className="px-2 text-base font-semibold tracking-wider text-foreground">
             Nomologi
           </span>
         </div>
-        <div className="flex items-center gap-3 text-xs font-medium uppercase">
+        <div className="flex items-center gap-3 text-xs font-medium">
           <Button asChild className="button-glow h-9 rounded-lg bg-primary px-4 text-[0.7rem] font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90">
             <a href="#early-access">
               Join Nomologi Waitlist

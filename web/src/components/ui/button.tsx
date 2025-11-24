@@ -52,11 +52,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fadeGlow();
     };
 
+    const setRefs: React.RefCallback<HTMLButtonElement> = (node) => {
+      elRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+      }
+    };
+
     return (
       <Comp
-        ref={elRef as React.Ref<any>}
+        ref={setRefs}
         className={cn(
-          'relative inline-flex h-10 items-center justify-center overflow-hidden whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [background-image:linear-gradient(90deg,transparent,rgba(56,46,254,0.9),transparent)] bg-[length:220%_100%] bg-[position:0%_0%]',
+          'relative inline-flex h-10 items-center justify-center overflow-hidden whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [background-image:linear-gradient(90deg,transparent,rgba(99,102,241,0.7),transparent)] bg-[length:220%_100%] bg-[position:0%_0%]',
           className,
         )}
         onMouseEnter={handleMouseEnter}

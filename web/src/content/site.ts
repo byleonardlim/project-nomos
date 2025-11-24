@@ -3,14 +3,15 @@ export const siteContent = {
     name: 'Nomologi',
   },
   meta: {
-    title: 'Nomologi – Simplifying automation for modern busy people',
-    description: 'Nomologi makes automation simple, opinionated, and collaborative for modern teams.',
+    title: 'Nomologi – Automation that feels human. Power that feels simple.',
+    description: 'Nomologi helps businesses build simple, effective automation without wrestling with complex tools.',
   },
+  baseUrl: 'https://nomologi.com',
   urls: {
     tallyInterest: 'https://tally.so/r/your-form-id',
   },
   footer: {
-    slogan: 'Built for teams who are tired of fighting their automation tools.',
+    slogan: 'Built for businesses who are tired of fighting their automation tools.',
   },
 } as const;
 
