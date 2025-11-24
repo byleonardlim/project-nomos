@@ -2,21 +2,7 @@
 
 import { SectionShell } from '@/components/layout/SectionShell';
 import { Card } from '@/components/ui/card';
-
-const FEATURES = [
-  {
-    title: 'Plain-language flows',
-    body: 'Sketch automations in short, readable steps instead of wiring complex node graphs.',
-  },
-  {
-    title: 'LLM-native actions',
-    body: 'Describe intent, plug in your tools, and let Nomos handle the boilerplate glue code.',
-  },
-  {
-    title: 'Safe to ship',
-    body: 'Review, tweak, and version changes before they touch production systems.',
-  },
-];
+import { featuresContent } from '@/content/landing/features';
 
 export function FeaturesSection() {
   return (
@@ -24,23 +10,23 @@ export function FeaturesSection() {
       <div className="w-full space-y-10">
         <div className="space-y-3">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Designed for real teams, not demo videos.
+            {featuresContent.heading}
           </h2>
           <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Three simple ideas: keep flows readable, keep integrations flexible, and keep you in control of what ships.
+            {featuresContent.description}
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {FEATURES.map((feature) => (
+        <div className="relative space-y-3">
+          {featuresContent.cards.map((card) => (
             <Card
-              key={feature.title}
-              className="flex h-full flex-col gap-3 rounded-xl border border-black/10 bg-background p-4"
+              key={card.title}
+              className="min-h-[300px] feature-card space-y-4 rounded-xl border border-black/10 bg-primary/10 backdrop-blur-lg p-4 flex flex-col justify-between"
             >
-              <h3 className="text-sm font-semibold uppercase">
-                {feature.title}
+              <h3 className="text-[2.5rem] font-semibold uppercase">
+                {card.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {feature.body}
+              <p className="w-[73ch]text-sm leading-relaxed text-muted-foreground">
+                {card.body}
               </p>
             </Card>
           ))}

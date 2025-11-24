@@ -32,9 +32,9 @@ export function BackgroundEffect() {
                 end: "bottom bottom",
                 scrub: 1,
             },
-            rotate: 360,
+            rotate: 560,
             scale: 1.5,
-            filter: "blur(180px) hue-rotate(720deg)",
+            filter: "blur(180px)",
             ease: "none",
         });
 

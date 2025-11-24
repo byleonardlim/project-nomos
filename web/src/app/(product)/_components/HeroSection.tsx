@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionShell } from '@/components/layout/SectionShell';
+import { heroContent } from '@/content/landing/hero';
 
 export function HeroSection() {
   return (
@@ -11,11 +12,10 @@ export function HeroSection() {
       <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)] md:items-center">
         <div className="space-y-8">
           <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground lg:text-6xl">
-            Build automations <br className="hidden md:block" />
-            <span className="text-primary">without the busywork.</span>
+            {heroContent.title}
           </h1>
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Nomos is a minimal workspace for sketching, testing, and shipping the workflows your team actually uses without complex builders or noisy dashboards.
+            {heroContent.description}
           </p>
         </div>
       </div>

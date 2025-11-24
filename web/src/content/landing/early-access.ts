@@ -1,7 +1,7 @@
 export const earlyAccessContent = {
-  heading: 'Help shape Nomologi from the beginning.',
+  heading: 'Help shape the first version.',
   description:
-    'We\'re working closely with a small set of early teams. If you care about automation as a core capability — not a side project — we\'d love to build with you.',
+    'Were inviting a small group of teams to experiment with Nomos as we refine the builder, the review loop, and integrations.',
   bullets: [
     'Monthly product sessions where we walk through real workflows and gaps.',
     'Early access to new capabilities in exchange for honest feedback.',

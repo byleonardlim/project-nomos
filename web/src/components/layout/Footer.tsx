@@ -7,7 +7,7 @@ import Link from 'next/link';
 export function Footer() {
   return (
     <footer
-      className="relative flex w-full flex-col justify-between overflow-hidden rounded-t-3xl bg-primary/10 px-4 py-12 text-primary-foreground sm:px-6 lg:px-8 backdrop-blur-lg"
+      className="relative flex w-full flex-col justify-between overflow-hidden rounded-t-4xl bg-primary/10 px-4 py-12 text-primary-foreground sm:px-6 lg:px-8 backdrop-blur-lg"
     >
       <div
         className="pointer-events-none absolute inset-0 -z-5 opacity-[0.08] mix-blend-overlay"
