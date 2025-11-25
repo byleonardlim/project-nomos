@@ -4,7 +4,7 @@ export const siteContent = {
   },
   meta: {
     title: 'Nomologi – Automation that feels human. Power that feels simple.',
-    description: 'Nomologi helps businesses build simple, effective automation without wrestling with complex tools.',
+    description: 'Helping businesses build simple, effective automation without wrestling with complex tools.',
   },
   baseUrl: 'https://nomologi.com',
   urls: {
