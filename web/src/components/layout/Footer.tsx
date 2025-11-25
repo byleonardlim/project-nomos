@@ -40,16 +40,16 @@ export function Footer() {
       </div>
 
       {/* Massive Text */}
+      <div className="mt-4 w-full text-center lg:text-right">
+        <span className="w-full mt-4 text-xs text-muted-foreground">
+          {siteContent.footer.slogan}
+        </span>
+      </div>
       <div className="m-0 p-0 pointer-events-none w-full leading-none">
         <span
           className="block w-full text-center text-[19vw] lg:text-[20vw] font-bold text-foreground/5"
         >
           {siteContent.brand.name}
-        </span>
-      </div>
-      <div className="mt-4 w-full text-center lg:text-right">
-        <span className="w-full mt-4 text-xs text-muted-foreground">
-          {siteContent.footer.slogan}
         </span>
       </div>
     </footer>

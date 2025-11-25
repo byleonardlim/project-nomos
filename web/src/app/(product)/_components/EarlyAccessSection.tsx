@@ -85,10 +85,6 @@ export function EarlyAccessSection() {
     <SectionShell id="early-access">
       <div className="mx-auto flex max-w-2xl flex-col gap-6">
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_0_4px_rgba(99,102,241,0.45)] motion-safe:animate-pulse" />
-            <span>Coming Soon</span>
-          </div>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             {earlyAccessContent.heading}
           </h2>
@@ -126,7 +122,7 @@ export function EarlyAccessSection() {
                 disabled={status === "loading"}
                 className="button-glow h-9 rounded-lg bg-primary px-4 text-base font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 disabled:opacity-70 disabled:hover:bg-primary"
               >
-                {status === "loading" ? "Joining..." : earlyAccessContent.panel.button}
+                {status === "loading" ? "Signing Up..." : earlyAccessContent.panel.button}
               </Button>
             </div>
             {status === "success" && (
