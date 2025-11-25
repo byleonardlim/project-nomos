@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Source_Sans_3, Work_Sans } from 'next/font/google';
+import Script from 'next/script';
 import { siteContent } from '@/content/site';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -72,6 +73,11 @@ export default function RootLayout({
       className={`${body.variable} ${heading.variable}`}
     >
       <body className="min-h-screen text-foreground">
+        <Script
+          src="https://cdn.overtracking.com/t/tJYZX4WSaPfG8K1jV/"
+          strategy="afterInteractive"
+          defer
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
