@@ -57,7 +57,7 @@ export function EarlyAccessSection() {
           email,
           meta: {
             name: name || undefined,
-            source: "landing-page",
+            source: "product-landing-page",
           },
         }),
       });
@@ -105,6 +105,12 @@ export function EarlyAccessSection() {
             {earlyAccessContent.panel.description}
           </p>
           <form onSubmit={handleSubmit} className="space-y-3">
+            {error && (
+              <p className="mt-2 flex items-center gap-4 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-[0.7rem] font-medium text-red-600">
+                <span className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_0_4px_rgba(239,68,68,0.45)] animate-pulse" />
+                <span>{error}</span>
+              </p>
+            )}
             <div className="space-y-2">
               <input
                 type="text"
@@ -136,12 +142,6 @@ export function EarlyAccessSection() {
                 <span>
                   You&apos;re on the list. We&apos;ll be in touch soon.
                 </span>
-              </p>
-            )}
-            {error && (
-              <p className="mt-2 flex items-start gap-2 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-[0.7rem] font-medium text-red-600">
-                <span className="mt-[2px] h-2 w-2 rounded-full bg-red-500 shadow-[0_0_0_4px_rgba(239,68,68,0.45)]" />
-                <span>{error}</span>
               </p>
             )}
           </form>
