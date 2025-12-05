@@ -1,7 +1,7 @@
 export const heroContent = {
-  title: 'Automation that feels human. Power that feels simple.',
+  title: 'Stop building workflows. Start delegating work.',
   description:
-    'Nomologi is a minimal automation workspace built for real teams — not developer dashboards. Sketch, test, and ship the workflows your business depends on without wrestling with complex builders, nodes, or diagrams.',
+    'The automation platform that works like a digital employee. No drag-and-drop, no complex nodes—just tell Nomologi what you need done, and it handles the rest.',
 } as const;
 
 export type HeroContent = typeof heroContent;
